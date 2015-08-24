@@ -9,27 +9,31 @@ $(document).ready(function () {
             inputPassword: {
                 required: true
             }
+        },
+        submitHandler: function(form) {
+            form.submit();
         }
     });
+
     $("#registerForm").validate({
         rules: {
-            registerName: {
+            name: {
                 required: true
             },
 
-            registerEmail: {
+            email: {
                 required: true,
                 email: true
             },
-            registerPassword: {
+            password: {
                 required: true,
                 minlength: 6
             },
 
-            registerPasswordRepeat: {
+            passConfirm: {
                 required: true,
                 minlength: 6,
-                equalTo: "#registerPassword"
+                equalTo: "#password"
             }
         },
         submitHandler: function(form) {

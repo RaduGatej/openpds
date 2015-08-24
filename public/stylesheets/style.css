@@ -1,6 +1,28 @@
 body {
-  padding: 50px;
+  padding-bottom: 40px;
+  background-color: #eee;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.navbar-custom {
+  background-color:#337AB7;
+  color:#ffffff;
+  border-radius:0;
+  margin-bottom: 0;
+}
+
+.navbar-custom .navbar-brand {
+  color:#ffffff;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  text-align: center;
+  margin: auto;
+}
+
+.alert {
+  border-radius:0;
 }
 
 a {

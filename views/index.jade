@@ -1,30 +1,30 @@
 extends layout
 
 block specific_css
-    link(rel='stylesheet', href='/stylesheets/login.css')
-    script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js")
-    script(src="/javascripts/login.js")
+  link(rel='stylesheet', href='/stylesheets/login.css')
+  script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js")
+  script(src="/javascripts/login.js")
 
 
 block content
-    div.container
-        form.form-signin#loginForm
-            h2.form-signin-heading Please sign in
-            label.sr-only(for="inputEmail") Email address
-            input.form-control#inputEmail(type="email", placeholder="Email address", name="inputEmail", autofocus)
-            label.sr-only(for="inputPassword") Password
-            input.form-control#inputPassword(type="password", placeholder="Password", name="inputPassword")
-            button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
-            button.btn.btn-lg.btn-secondary.btn-block(data-toggle="collapse", data-target="#registerForm", type="button", formnovalidate) Register
+  div.container
+    form.form-signin#loginForm(method="POST", action="/login")
+      h2.form-signin-heading Please sign in
+      label.sr-only(for="inputEmail") Email address
+      input.form-control#inputEmail(type="email", placeholder="Email address", name="inputEmail", autofocus)
+      label.sr-only(for="inputPassword") Password
+      input.form-control#inputPassword(type="password", placeholder="Password", name="inputPassword")
+      button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
+      button.btn.btn-lg.btn-secondary.btn-block(data-toggle="collapse", data-target="#registerForm", type="button", formnovalidate) Register
 
-        form.collapse.form-signin#registerForm
-            h2.form-signin-heading Register
-            label.sr-only(for="registerName") Name
-            input.form-control#registerName(type="text", placeholder="Name and surname", name="registerName", autofocus)
-            label.sr-only(for="registerEmail") Email address
-            input.form-control#registerEmail(type="email", placeholder="Email address", name="registerEmail", autofocus)
-            label.sr-only(for="registerPassword") Password
-            input.form-control#registerPassword(type="password", placeholder="Password", name="registerPassword")
-            label.sr-only(for="registerPasswordRepeat") Repeat password
-            input.form-control#registerPasswordRepeat(type="password", placeholder="Repeat password", name = "registerPasswordRepeat")
-            button.btn.btn-lg.btn-primary.btn-block(type="submit") Submit
+    form.collapse.form-signin#registerForm(method="POST", action="")
+      h2.form-signin-heading Register
+      label.sr-only(for="registerName") Name
+      input.form-control#registerName(type="text", placeholder="Name and surname", name="name", autofocus)
+      label.sr-only(for="registerEmail") Email address
+      input.form-control#registerEmail(type="email", placeholder="Email address", name="email", autofocus)
+      label.sr-only(for="password") Password
+      input.form-control#password(type="password", placeholder="Password", name="password")
+      label.sr-only(for="registerPasswordRepeat") Repeat password
+      input.form-control#registerPasswordRepeat(type="password", placeholder="Repeat password", name="passConfirm")
+      button.btn.btn-lg.btn-primary.btn-block(type="submit") Submit

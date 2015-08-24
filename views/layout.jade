@@ -10,5 +10,14 @@ html
     script(src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
     script(src='/bootstrap/js/bootstrap.min.js')
     block specific_css
-  body
-    block content
+
+    body
+      nav.navbar.navbar-custom
+        div.container-fluid
+          div.navbar-header
+            a.navbar-brand(href="#") openPDS
+
+      - if (messages.error)
+          div.alert.alert-danger= messages.error
+
+      block content
