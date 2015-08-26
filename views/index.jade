@@ -17,10 +17,12 @@ block content
       button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
       button.btn.btn-lg.btn-secondary.btn-block(data-toggle="collapse", data-target="#registerForm", type="button", formnovalidate) Register
 
-    form.collapse.form-signin#registerForm(method="POST", action="")
+    form.collapse.form-signin#registerForm(method="POST", action="/register")
       h2.form-signin-heading Register
-      label.sr-only(for="registerName") Name
-      input.form-control#registerName(type="text", placeholder="Name and surname", name="name", autofocus)
+      label.sr-only(for="registerGivenName") Given name
+      input.form-control#registerGivenName(type="text", placeholder="Given name", name="given_name", autofocus)
+      label.sr-only(for="registerFamilyName") Family name
+      input.form-control#registerFamilyName(type="text", placeholder="Family name", name="family_name", autofocus)
       label.sr-only(for="registerEmail") Email address
       input.form-control#registerEmail(type="email", placeholder="Email address", name="email", autofocus)
       label.sr-only(for="password") Password

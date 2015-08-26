@@ -41,4 +41,35 @@ router.get('/', function (req, res, next) {
   res.render('index', {title: 'Login'});
 });
 
+router.get('/register', function (req, res, next) {
+  res.render('register', {title: 'Register'});
+});
+
+router.post('/register', oidc.use({policies: {loggedIn: false}, models: 'user'}), function (req, res, next) {
+  delete req.session.error;
+  req.model.user.findOne({email: req.body.email}, function (err, user) {
+    if (err) {
+      req.session.error = err.message;
+    } else if (user) {
+      req.session.error = 'User already exists.';
+    }
+    if (req.session.error) {
+      console.log(req.session.error);
+      req.flash('error', req.session.error);
+      res.redirect(req.path);
+    } else {
+      req.body.name = req.body.given_name + " " + req.body.family_name;
+      req.model.user.create(req.body, function (err, user) {
+        if (err || !user) {
+          req.session.error = err ? err.message : 'User could not be created.';
+          req.flash('error', req.session.error);
+          res.redirect(req.path);
+        } else {
+          req.session.user = user.id;
+          res.redirect('/users/home');
+        }
+      });
+    }
+  });
+});
 module.exports = router;
