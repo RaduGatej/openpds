@@ -1,15 +1,15 @@
 extends layout
 
 block specific_css
-  link(rel='stylesheet', href='/stylesheets/login.css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
   script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js")
   script(src="/javascripts/login.js")
 
 
 block content
   div.container
-    form.form-signin#loginForm(method="POST", action="/login")
-      h2.form-signin-heading Please sign in
+    form.form#loginForm(method="POST", action="/login")
+      h2.form-heading Please sign in
       label.sr-only(for="inputEmail") Email address
       input.form-control#inputEmail(type="email", placeholder="Email address", name="inputEmail", autofocus)
       label.sr-only(for="inputPassword") Password
@@ -17,8 +17,8 @@ block content
       button.btn.btn-lg.btn-primary.btn-block(type="submit") Sign in
       button.btn.btn-lg.btn-secondary.btn-block(data-toggle="collapse", data-target="#registerForm", type="button", formnovalidate) Register
 
-    form.collapse.form-signin#registerForm(method="POST", action="/register")
-      h2.form-signin-heading Register
+    form.collapse.form#registerForm(method="POST", action="/register")
+      h2.form-heading Register
       label.sr-only(for="registerGivenName") Given name
       input.form-control#registerGivenName(type="text", placeholder="Given name", name="given_name", autofocus)
       label.sr-only(for="registerFamilyName") Family name

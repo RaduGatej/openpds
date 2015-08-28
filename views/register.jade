@@ -1,12 +1,12 @@
 extends layout
 block specific_css
-  link(rel='stylesheet', href='/stylesheets/login.css')
+  link(rel='stylesheet', href='/stylesheets/style.css')
   script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js")
   script(src="/javascripts/login.js")
 
 block content
-  form.form-signin#registerForm(method="POST", action="/register")
-    h2.form-signin-heading Register
+  form.form#registerForm(method="POST", action="/register")
+    h2.form-heading Register
     label.sr-only(for="registerGivenName") Given name
     input.form-control#registerGivenName(type="text", placeholder="Given name", name="given_name", autofocus)
     label.sr-only(for="registerFamilyName") Family name
