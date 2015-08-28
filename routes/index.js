@@ -15,7 +15,9 @@ var validateUser = function (req, next) {
 };
 
 var afterLogin = function (req, res, next) {
-  res.redirect(req.param('return_url') || '/users/home');
+  var return_url = req.session.return_url;
+  req.session.return_url = null;
+  res.redirect(return_url || "/users/home");
 };
 
 var loginError = function (err, req, res, next) {
@@ -25,6 +27,11 @@ var loginError = function (err, req, res, next) {
 
 router.post('/login', oidc.login(validateUser), afterLogin, loginError);
 
+router.get('/login', function (req, res, next) {
+  req.session.return_url = req.query.return_url;
+  res.render('index', {title: 'Login'});
+});
+
 var afterLogout = function (req, res, next) {
   req.session.destroy();
   res.redirect('/');
@@ -32,9 +39,7 @@ var afterLogout = function (req, res, next) {
 
 router.all('/logout', oidc.removetokens(), afterLogout);
 
-router.get('/login', function (req, res, next) {
-  res.render('index', {title: 'Login'});
-});
+
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -54,7 +59,6 @@ router.post('/register', oidc.use({policies: {loggedIn: false}, models: 'user'})
       req.session.error = 'User already exists.';
     }
     if (req.session.error) {
-      console.log(req.session.error);
       req.flash('error', req.session.error);
       res.redirect(req.path);
     } else {

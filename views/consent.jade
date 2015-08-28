@@ -1,0 +1,16 @@
+extends layout
+block specific_css
+  link(rel='stylesheet', href='/stylesheets/style.css')
+
+block content
+  form.form#consentForm(method="POST")
+    h2.form-heading= client_name + " would like to access your:"
+    ul.list-unstyled
+      each scope, scope_name in scopes
+        li
+          b= scope_name + ":"
+        li= scope.explain
+        br
+
+    input.btn.btn-primary.btn-block(type="submit", name="accept", value="Accept")
+    input.btn.btn-default.btn-block(type="submit", name="cancel", value="Cancel")

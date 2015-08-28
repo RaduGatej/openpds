@@ -3,7 +3,7 @@ var app = require("./app.js");
 
 var options = {
   login_url: '/login',
-  consent_url: '/consent',
+  consent_url: '/oauth/consent',
   scopes: {
     foo: 'Access to foo special resource',
     bar: 'Access to bar special resource'
