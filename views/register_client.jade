@@ -1,0 +1,18 @@
+extends layout
+block specific_css
+  script(src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js")
+  script(src="/javascripts/register_client.js")
+
+block content
+   div.container
+      form.form#registerForm(method="POST", action="/oauth/register_client")
+         h2.form-heading Register a new client
+         label.sr-only(for="name") Name
+         input.form-control#name(type="text", placeholder="Client name", name="name", autofocus)
+         label.sr-only(for="redirect") Redirect URI
+         input.form-control#redirect(type="url", placeholder="Redirect URI", name="redirect")
+         label(for="key")= "Client key: " + client_key
+         input.form-control#key(type="hidden", value=client_key, name="key", readonly="true")
+         label(for="secret")= "Client secret: " + client_secret
+         input.form-control#secret(type="hidden", value=client_secret, name="secret", readonly="true")
+         button.btn.btn-lg.btn-primary.btn-block(type="submit") Register
