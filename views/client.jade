@@ -1,0 +1,8 @@
+extends layout
+block content
+   div.form
+      h2.form-heading= client.name
+      ul.list-group
+         a.list-group-item(href=client.redirect_uris[0])= client.redirect_uris[0]
+         li.list-group-item= "Key: " + client.key
+         li.list-group-item= "Secret: " + client.secret

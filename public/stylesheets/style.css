@@ -34,6 +34,12 @@ a {
   padding: 15px;
   margin: 0 auto;
 }
+
+.center-box {
+  max-width: 330px;
+  margin: 0 auto;
+}
+
 .form .form-heading,
 .form .checkbox {
   margin-bottom: 10px;

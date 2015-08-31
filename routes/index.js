@@ -76,4 +76,6 @@ router.post('/register', oidc.use({policies: {loggedIn: false}, models: 'user'})
     }
   });
 });
+
+
 module.exports = router;

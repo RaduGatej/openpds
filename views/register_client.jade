@@ -5,7 +5,7 @@ block specific_css
 
 block content
    div.container
-      form.form#registerForm(method="POST", action="/oauth/register_client")
+      form.form#registerForm(method="POST", action="/developer/apps/register")
          h2.form-heading Register a new client
          label.sr-only(for="name") Name
          input.form-control#name(type="text", placeholder="Client name", name="name", autofocus)

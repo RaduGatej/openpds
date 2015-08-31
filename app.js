@@ -10,6 +10,7 @@ var flash = require('express-flash');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var oauth = require('./routes/oauth');
+var developer = require('./routes/developer');
 
 var app = express();
 
@@ -30,6 +31,7 @@ app.use(flash());
 app.use('/', routes);
 app.use('/users', users);
 app.use('/oauth', oauth);
+app.use('/developer', developer);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

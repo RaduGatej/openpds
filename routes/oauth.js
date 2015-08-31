@@ -32,26 +32,4 @@ router.get('/consent', oidc.use("client"), function (req, res, next) {
 
 router.post('/consent', oidc.consent());
 
-//client register form
-router.get('/register_client', oidc.use("user"), function(req, res, next) {
-  console.log(req.session.user);
-  var key = crypto.createHash('md5').update(req.session.user+'-'+Math.random()).digest('hex');
-  var secret = crypto.createHash('md5').update(key+req.session.user+Math.random()).digest('hex');
-  res.render("register_client", {title: "Register new client", client_key: key, client_secret: secret});
-});
-
-router.post('/register_client', oidc.use('client'), function(req, res, next) {
-  delete req.session.error;
-  req.body.user = req.session.user;
-  req.body.redirect_uris = req.body.redirect.split(/[, ]+/);
-  req.model.client.create(req.body, function(err, client){
-    if(!err && client) {
-      res.redirect('/users/client/'+client.id);
-    } else {
-      req.flash("error", err.message);
-      res.redirect(req.baseUrl + req.path);
-    }
-  });
-});
-
 module.exports = router;

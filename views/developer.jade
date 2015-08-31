@@ -1,0 +1,10 @@
+extends layout
+block content
+  div.form
+    h2.form-heading Your apps
+    ul.list-group
+      each client in clients
+        a.list-group-item(href="/developer/apps/app/" + client.id)= client.name
+    a.btn.btn-primary.btn-block(href="/developer/apps/register") Register new app
+
+
