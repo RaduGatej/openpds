@@ -10,7 +10,7 @@ block content
          label.sr-only(for="name") Name
          input.form-control#name(type="text", placeholder="Client name", name="name", autofocus)
          label.sr-only(for="redirect") Redirect URI
-         input.form-control#redirect(type="url", placeholder="Redirect URI", name="redirect")
+         input.form-control#redirect(type="text", placeholder="Redirect URI", name="redirect")
          label(for="key")= "Client key: " + client_key
          input.form-control#key(type="hidden", value=client_key, name="key", readonly="true")
          label(for="secret")= "Client secret: " + client_secret
